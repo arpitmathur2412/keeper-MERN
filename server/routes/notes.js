@@ -3,7 +3,6 @@ const mongoose=require("mongoose")
 const fetchuser=require("../middleware/fetchuser")
 const notesschema=require("../models/Notes")
 const { body, validationResult } = require('express-validator');
-const express = require("express");
 const router=express.Router();
 
 
