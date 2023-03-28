@@ -17,7 +17,6 @@ router.get("/",(req,res)=>{
     res.send("/api/auth");
 })
 
-
 // ROUTE-1
 
 //Create a User using: POST "/api/auth"   Doesn't require Auth
