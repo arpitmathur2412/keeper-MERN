@@ -1,13 +1,15 @@
-import React from 'react';
 import Navigationbar from "./Navbar";
+import Notes from "./Notes";
 
 function Home(){
- return(
+return(
     <div>
         <Navigationbar/>
-        <h1>This is the Home page homie</h1>
+        <div>
+            <h3>Welcome to QuickNotes!</h3>
+        </div>
+        <Notes/>
     </div>
- )
-}
+ )} 
 
 export default Home;

@@ -7,12 +7,12 @@ function Navigationbar() {
   return (
     <Navbar bg="dark" variant='dark' expand="lg">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand style={{"margin-right":"100px"}} href="#home">QuickNotes</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link}  to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/about">about</Nav.Link>
+            <Nav.Link style={{"margin-right":"20px"}} as={Link}  to="/">HOME</Nav.Link>
+            <Nav.Link as={Link} to="/about">ABOUT</Nav.Link>
           </Nav>
           <Nav>
           <Nav.Link as={Link} to="/login">LOGIN</Nav.Link>
