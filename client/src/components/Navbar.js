@@ -7,11 +7,11 @@ function Navigationbar() {
   return (
     <Navbar bg="dark" variant='dark' expand="lg">
       <Container>
-        <Navbar.Brand style={{"margin-right":"100px"}} href="#home">QuickNotes</Navbar.Brand>
+        <Navbar.Brand style={{marginRight:"100px"}} href="#home">QuickNotes</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link style={{"margin-right":"20px"}} as={Link}  to="/">HOME</Nav.Link>
+            <Nav.Link style={{marginRight:"20px"}} as={Link}  to="/">HOME</Nav.Link>
             <Nav.Link as={Link} to="/about">ABOUT</Nav.Link>
           </Nav>
           <Nav>

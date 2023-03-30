@@ -5,7 +5,7 @@ const NoteState=(props)=>{
     const initialnotes=
     [
         {
-          "_id": "641d1f36338dfd4460060887",
+          "_id": "641d1f36338dfdertertetwqweqq44600608a87",
           "userid": "641b570db9ebcd914d969205",
           "title": "updated note bro",
           "description": "updated description",
@@ -14,7 +14,7 @@ const NoteState=(props)=>{
           "__v": 0
         },
         {
-          "_id": "6424479c0d0d7a3ea9283d7b",
+          "_id": "6424tertret479c0d0db7a3ea9283d7b",
           "userid": "641b570db9ebcd914d969205",
           "title": "set alarm",
           "description": "wake up for work",
@@ -23,7 +23,7 @@ const NoteState=(props)=>{
           "__v": 0
         },
         {
-            "_id": "6424479c0d0d7a3ea9283d7b",
+            "_id": "6424c479c0d0d7a3ea9ertert283d7b",
             "userid": "641b570db9ebcd914d969205",
             "title": "set alarm",
             "description": "wake up for work",
@@ -32,7 +32,7 @@ const NoteState=(props)=>{
             "__v": 0
           },
           {
-            "_id": "6424479c0d0d7a3ea9283d7b",
+            "_id": "6ertert424479c0d0d7a3dea9283d7b",
             "userid": "641b570db9ebcd914d969205",
             "title": "set alarm",
             "description": "wake up for work",
@@ -41,7 +41,7 @@ const NoteState=(props)=>{
             "__v": 0
           },
           {
-            "_id": "6424479c0d0d7a3ea9283d7b",
+            "_id": "6424479c0d0qweqd7ea3ea9283d7b",
             "userid": "641b570db9ebcd914d969205",
             "title": "set alarm",
             "description": "wake up for work",
