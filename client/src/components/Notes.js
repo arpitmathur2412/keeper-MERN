@@ -3,8 +3,9 @@ import noteContext from '../context/notes/noteContext';
 import NoteItem from "./NoteItem";
 
 function Notes(){
-    const context=useContext(noteContext)  
-    const {notes,setnotes}=context;    
+    const context=useContext(noteContext)
+    //  
+    const {notes}=context;    
     
     return(
         <div>
