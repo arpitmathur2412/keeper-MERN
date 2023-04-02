@@ -55,6 +55,7 @@ const NoteState=(props)=>{
       //Add a note
 
       function addNote(newnote){
+        // ADD API CALL
         const note={
           title:newnote.title,
           description:newnote.description,
@@ -65,10 +66,10 @@ const NoteState=(props)=>{
       }
       
       //delete a note
-      function deleteNote(){
-        return({
-          
-        })
+      function deleteNote(id){
+        // ADD API CALL
+        console.log("deleting note with id "+id)
+        setNotes(notes.filter((note)=>{return note._id!==id}))
       }
       //edit a note
       function editNote(){

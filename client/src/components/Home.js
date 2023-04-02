@@ -7,9 +7,6 @@ return(
     <div>
         <Navigationbar/>
         {/* <Alerts/> */}
-        <div>
-            <h3>Welcome to QuickNotes!</h3>
-        </div>
         <Notes/>
     </div>
  )} 
