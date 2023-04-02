@@ -1,12 +1,12 @@
 import Navigationbar from "./Navbar";
 import Notes from "./Notes";
-import Alerts from "./Alert";
+// import Alerts from "./Alert";
 
 function Home(){
 return(
     <div>
         <Navigationbar/>
-        <Alerts/>
+        {/* <Alerts/> */}
         <div>
             <h3>Welcome to QuickNotes!</h3>
         </div>

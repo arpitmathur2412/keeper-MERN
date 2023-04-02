@@ -54,11 +54,16 @@ const NoteState=(props)=>{
     
       //Add a note
 
-      function addNote(note){
-        return(
-          setNotes(notes.push(note))
-        )
+      function addNote(newnote){
+        const note={
+          title:newnote.title,
+          description:newnote.description,
+          tag:newnote.tag
+        }
+        setNotes(notes.concat(note))
+        
       }
+      
       //delete a note
       function deleteNote(){
         return({
