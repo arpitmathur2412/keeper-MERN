@@ -28,15 +28,15 @@ router.post("/createnote",fetchuser,
         res.json(note)
 })
 
-router.delete("/deletenote",fetchuser,
+router.delete("/deletenote/:id",fetchuser,
 async (req,res)=>{
-    const userid=req.user.id;
-    let note=await Notes.find({userid:userid})
+    const noteid=req.params.id;
+    let note=await Notes.find({_id:noteid})
     if(!note){
         res.status(500).send("No notes present to delete")
     }
     else{
-    await Notes.deleteOne({userid:userid,title:req.body.title,description:req.body.description,tag:req.body.tag})
+    await Notes.deleteOne({_id:noteid})
     res.send("deleted the note successfully")
     }
 })
