@@ -10,12 +10,16 @@ function Notes(){
         fetchNotes()
     })
 
+    function updateNote(note){
+
+    }
+
     return(
         <div>
             <AddNote/>
             
             {notes.map((note)=>{
-            return <NoteItem key={note._id} note={note}/>
+            return <NoteItem key={note._id} updateNote={updateNote} note={note}/>
         })}
         </div>       
     )
