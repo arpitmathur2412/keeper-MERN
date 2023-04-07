@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useRef} from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import noteContext from '../context/notes/noteContext';
 import NoteItem from "./NoteItem";
 import AddNote from './AddNote';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import Form from 'react-bootstrap/Form';
 
 function Notes() {
     const context = useContext(noteContext)
-    const { notes,fetchNotes,show,handleClose} = context;
+    const { notes, fetchNotes, show, handleClose } = context;
 
     useEffect(() => {
         fetchNotes()
@@ -25,9 +25,29 @@ function Notes() {
             <>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Edit Note</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Body>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Title</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder=""
+                                    autoFocus
+                                    name="title"
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Description</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder=""
+                                    name="description"
+                                />
+                            </Form.Group>
+                        </Form>
+                    </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
@@ -46,4 +66,4 @@ function Notes() {
     )
 }
 
-export default Notes ;
+export default Notes;
