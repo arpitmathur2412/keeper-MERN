@@ -2,57 +2,15 @@ import React, { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState=(props)=>{  
-    const host="http://localhost:5000"  
-    const initialnotes=
-    [
-        {
-          "_id": "641d1f36338dfdertertetwqweqq44600608a87",
-          "userid": "641b570db9ebcd914d969205",
-          "title": "updated note bro",
-          "description": "updated description",
-          "tag": "updated",
-          "date": "2023-03-24T03:55:34.702Z",
-          "__v": 0
-        },
-        {
-          "_id": "6424tertret479c0d0db7a3ea9283d7b",
-          "userid": "641b570db9ebcd914d969205",
-          "title": "set alarm",
-          "description": "wake up for work",
-          "tag": "personal",
-          "date": "2023-03-29T14:13:48.385Z",
-          "__v": 0
-        },
-        {
-            "_id": "6424c479c0d0d7a3ea9ertert283d7b",
-            "userid": "641b570db9ebcd914d969205",
-            "title": "set alarm",
-            "description": "wake up for work",
-            "tag": "personal",
-            "date": "2023-03-29T14:13:48.385Z",
-            "__v": 0
-          },
-          {
-            "_id": "6ertert424479c0d0d7a3dea9283d7b",
-            "userid": "641b570db9ebcd914d969205",
-            "title": "set alarm",
-            "description": "wake up for work",
-            "tag": "personal",
-            "date": "2023-03-29T14:13:48.385Z",
-            "__v": 0
-          },
-          {
-            "_id": "6424479c0d0qweqd7ea3ea9283d7b",
-            "userid": "641b570db9ebcd914d969205",
-            "title": "set alarm",
-            "description": "wake up for work",
-            "tag": "personal",
-            "date": "2023-03-29T14:13:48.385Z",
-            "__v": 0
-          }
-      ]
+    const host="http://localhost:5000"
+
+    const initialnotes=[{}];
+
       const [notes,setNotes]=useState(initialnotes)
-    
+      const [show, setShow] = useState(false);
+      const handleClose = () => setShow(false);
+      const handleShow = () => setShow(true);
+
       //fetching all notes
 
       async function fetchNotes(){
@@ -89,7 +47,7 @@ const NoteState=(props)=>{
           body: JSON.stringify({title,description,tag}) 
         });
         const json=response.json()  
-
+        console.log(json);
         // ADD API CALL
         const note={
           title,
@@ -113,6 +71,7 @@ const NoteState=(props)=>{
             }
         });
         const json=response.json()
+        console.log(json);
         // setNotes(json)
 
         // ADD API CALL
@@ -136,6 +95,7 @@ const NoteState=(props)=>{
           body: JSON.stringify({title,description,tag}) 
         });
         const json=response.json()
+        console.log(json);
 
       
         // logic to edit in client
@@ -151,7 +111,7 @@ const NoteState=(props)=>{
       }
 
       return(
-        <NoteContext.Provider value={{notes,addNote,deleteNote,editNote,fetchNotes}}>
+        <NoteContext.Provider value={{notes,addNote,deleteNote,editNote,fetchNotes,show,handleClose,handleShow}}>
             {props.children}
         </NoteContext.Provider>
     )
