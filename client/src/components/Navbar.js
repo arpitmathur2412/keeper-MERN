@@ -15,7 +15,8 @@ function Navigationbar() {
             <Nav.Link as={Link} to="/about">ABOUT</Nav.Link>
           </Nav>
           <Nav>
-          <Nav.Link as={Link} to="/login">LOGIN</Nav.Link>
+          <Nav.Link style={{marginRight:"20px"}} as={Link} to="/login">LOGIN</Nav.Link>
+          <Nav.Link as={Link} to="/signup">SIGNUP</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
