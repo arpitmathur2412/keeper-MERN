@@ -98,16 +98,16 @@ const NoteState=(props)=>{
         console.log(json);
 
       
-        // logic to edit in client
+        // // logic to edit in client
 
-        for(let i=0;i<notes.length;i++){
-          let element=notes[i];
-          if(element._id===id){
-            element.title=title;
-            element.description=description;
-            element.tag=tag;
-          }
-        }
+        // for(let i=0;i<notes.length;i++){
+        //   let element=notes[i];
+        //   if(element._id===id){
+        //     element.title=title;
+        //     element.description=description;
+        //     element.tag=tag;
+        //   }
+        // }
       }
 
       return(

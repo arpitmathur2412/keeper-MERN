@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import noteContext from '../context/notes/noteContext';
 import NoteItem from "./NoteItem";
 import AddNote from './AddNote';
@@ -8,15 +8,28 @@ import Form from 'react-bootstrap/Form';
 
 function Notes() {
     const context = useContext(noteContext)
-    const { notes, fetchNotes, show, handleClose } = context;
+    const { notes, fetchNotes,editNote, show, handleClose,handleShow } = context;
 
-    useEffect(() => {
+    let [enote,setenote]=useState({id:"",title:"", description:"", tag:""})
+
+    function onChange(event){
+        setenote({...enote,[event.target.name]:event.target.value})
+    }
+
+    function onClick(e){
+        e.preventDefault()
+        console.log({enote});
+        editNote(enote.id,enote.title,enote.description,enote.tag)
+        handleClose()
+    }
+
+    useEffect(() => {   
         fetchNotes()
     })
 
-    const ref = useRef(null)
-    function updateNote(note) {
-        ref.current.click()
+    const updateNote=(currentnote)=> {
+        handleShow();
+        setenote({id:currentnote._id,title:currentnote.title,description:currentnote.description,tag:currentnote.tag})
     }
 
     return (
@@ -36,6 +49,8 @@ function Notes() {
                                     placeholder=""
                                     autoFocus
                                     name="title"
+                                    value={enote.title}
+                                    onChange={onChange}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -44,6 +59,18 @@ function Notes() {
                                     type="text"
                                     placeholder=""
                                     name="description"
+                                    value={enote.description}
+                                    onChange={onChange}
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Tag</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder=""
+                                    name="tag"
+                                    value={enote.tag}
+                                    onChange={onChange}
                                 />
                             </Form.Group>
                         </Form>
@@ -52,7 +79,7 @@ function Notes() {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={handleClose}>
+                        <Button variant="primary" onClick={onClick}>
                             Save Changes
                         </Button>
                     </Modal.Footer>
