@@ -11,7 +11,9 @@ function NoteItem(props){
 
 
     return(
+      
         <Card className='shadow-sm p-3 mb-5 bg-white roundedx' style={{backgroundColor:'#ECF2FF',width: '18rem',margin:'20px',display:'inline-block',color:"#2C74B3"}}>
+        <Card.Header style={{backgroundColor:"#C9EEFF"}}>{props.note.tag}</Card.Header>
         <Card.Body>
           <Card.Title>{props.note.title}</Card.Title>
           <Card.Text>
