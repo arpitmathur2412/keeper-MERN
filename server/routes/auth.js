@@ -27,14 +27,18 @@ body('password').isLength({min:8}),
 body('email').isEmail(),
 
 async (req,res)=>{
+    let success=false;
+
     const errors=validationResult(req)
     if(!errors.isEmpty()){
+        success=false;
         return res.status(400).json({errors:errors.array()})
     }
 
     let temp= await User.findOne({"email":req.body.email})
     console.log(temp);
     if(temp){
+        success=false;
         return res.status(400).json({error:"user already exists"})
     }
 
@@ -42,7 +46,7 @@ else{
     
     let pass=await req.body.password;
 
-    const salt=await bcrypt.genSaltSync(10)
+    const salt=bcrypt.genSaltSync(10)
     const secpass=await bcrypt.hash(pass,salt)
 
     let user= await User.create({
@@ -58,7 +62,8 @@ else{
     }
     }
     const authtoken=jwt.sign(data,JWT_SECRET);
-    res.send({authtoken})
+    success=true;
+    res.json({success,authtoken})
 }
 })
 
@@ -69,7 +74,9 @@ router.post("/login",
 
 body('email').isEmail(),
 body('password').exists(),
+
 async (req,res)=>{
+    let success=false;
     const errors=validationResult(req)
     if(!errors.isEmpty()){
         return res.status(400).json({errors:errors.array()})
@@ -80,13 +87,15 @@ async (req,res)=>{
         try {
             const user=await User.findOne({email:email})
             if(!user){
-                res.status(400).json({error:"Incorrect credentials entered!"})
+                success=false;
+                res.status(400).json({success,error:"Incorrect credentials entered!"})
             }
             else{
             const passwordcompare= await bcrypt.compare(password,user.password)
-
+            
             if(!passwordcompare){
-                res.status(400).json({error:"Incorrect credentials entered!"})
+                success=false;
+                res.status(400).json({success,error:"Incorrect credentials entered!"})
             }
             else{
                 
@@ -96,7 +105,8 @@ async (req,res)=>{
                 }
             }   
             const authtoken=jwt.sign(payload,JWT_SECRET);
-            res.json({authtoken})
+            success=true;  
+            res.json({success,authtoken});
         }
     }
         } catch (error) {

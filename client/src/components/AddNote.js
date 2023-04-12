@@ -30,21 +30,21 @@ function AddNote(){
 
             <Form action='/form' method='post'>
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                <Form.Label column sm="2">Title</Form.Label>
+                <Form.Label column sm="2"><strong>TITLE</strong></Form.Label>
                 <Col sm="3">
                 <Form.Control onChange={onChange} type="text" value={newnote.title} name="title" placeholder="title" />
                 </Col>
                 </Form.Group>
 
                 <Form.Group as={Row} className="mb-3"  controlId="formPlaintextPassword">
-                <Form.Label column sm="2">Description</Form.Label>
+                <Form.Label column sm="2"><strong>DESCRIPTION</strong></Form.Label>
                 <Col sm="3">
                 <Form.Control type="text" onChange={onChange} value={newnote.description} name="description" placeholder="description" />
                 </Col>
                 </Form.Group>
 
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                <Form.Label column sm="2">Tag</Form.Label>
+                <Form.Label column sm="2"><strong>TAG</strong></Form.Label>
                 <Col sm="3">
                 <Form.Control type="text" name="tag" value={newnote.tag} onChange={onChange} placeholder="tag" />
                 </Col>

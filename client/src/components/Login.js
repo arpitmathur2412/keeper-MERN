@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import Navigationbar from "./Navbar";
+import {useNavigate} from 'react-router-dom'
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import styles from "./Login.css"
 import Button from 'react-bootstrap/Button';
 
-function Login(){
+function Login(props){
+    const navigate=useNavigate()
     const [login,setLogin]=useState({email:"",password:""})
 
     function onChange(e){
@@ -15,8 +16,8 @@ function Login(){
 
 
     async function onClick(e){
-        const host="http://localhost:5000"
         e.preventDefault()
+        const host="http://localhost:5000"
         const response = await fetch(`${host}/api/auth/login`,
         {
           method: "POST",
@@ -27,27 +28,34 @@ function Login(){
         
           body: JSON.stringify({email:login.email,password:login.password}) 
         });
-        const json=response.json()  
+        const json=await response.json()  
         console.log(json);
+        
+        if(json.success){
+            // save the auth-token and redirect
+            props.showAlert("Logged In Successfully!","primary")
+            localStorage.setItem('auth-token',json.authtoken)
+            navigate("/");
+        } 
+        else props.showAlert("Invalid Credentials!","danger")
         
     }
 
     return(
         <div>
-            <Navigationbar/>
             <div className='login-form' style={styles}>
             <h2 style={{styles}}>LOGIN</h2>
             <br></br>
-            <Form action='/form' method='post'>
+            <Form action='/login' method='post'>
            
-                <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                <Form.Group as={Row} className="mb-3" controlId="login-email">
                 <Form.Label column sm="2">Email</Form.Label>
                 <Col sm="3">
                 <Form.Control onChange={onChange} type="email" placeholder="Email" name="email" value={login.email}/>
                 </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                <Form.Group as={Row} className="mb-3" controlId="login-pass">
                 <Form.Label column sm="2">Password</Form.Label>
                 <Col sm="3">
                 <Form.Control type="password" onChange={onChange} placeholder="Password" name="password" value={login.password}
@@ -58,7 +66,6 @@ function Login(){
             </Form>
             </div>
         </div>
-    )
-}
+    )}
 
 export default Login;

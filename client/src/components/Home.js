@@ -1,13 +1,11 @@
-import Navigationbar from "./Navbar";
 import Notes from "./Notes";
 // import Alerts from "./Alert";
 
-function Home(){
+function Home(props){
 return(
     <div>
-        <Navigationbar/>
-        {/* <Alerts/> */}
-        <Notes/>
+        {/* <Alerts message="successfully created account" variant="success"/> */}
+        <Notes showAlert={props.showAlert}/>
     </div>
  )} 
 

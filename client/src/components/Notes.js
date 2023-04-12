@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-function Notes() {
+function Notes(props) {
     const context = useContext(noteContext)
     const { notes, fetchNotes,editNote, show, handleClose,handleShow } = context;
 

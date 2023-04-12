@@ -1,9 +1,9 @@
 import Alert from 'react-bootstrap/Alert';
 
-function Alerts(){
+function Alerts(props){
     return(
-        <Alert key={'primary'} variant={'primary'}>
-        This is a {'primary'} alert—check it out!
+        <Alert key={'primary'} variant={props.alert.variant}>
+        {props.alert.message}
       </Alert>
     )
 }
