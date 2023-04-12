@@ -47,7 +47,7 @@ function Notes(props) {
             <AddNote showAlert={props.showAlert} />
             <>
                 <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
+                    <Modal.Header style={{backgroundColor:"#B4E4FF"}} closeButton>
                         <Modal.Title>Edit Note</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -86,7 +86,7 @@ function Notes(props) {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
+                        <Button variant="light" onClick={handleClose}>
                             Close
                         </Button>
                         <Button variant="primary" onClick={onClick}>
