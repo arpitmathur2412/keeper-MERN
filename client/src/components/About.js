@@ -19,9 +19,6 @@ function About(){
                 his B-Tech in Computer Science and Engineering from Pandit Deendayal Energy University, Gandhinagar (PDEU) in year 2025.
                 </h5>
             </div>
-            
-
-           
         </div>
     )
 }
