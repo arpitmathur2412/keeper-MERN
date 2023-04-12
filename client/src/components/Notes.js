@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import noteContext from '../context/notes/noteContext';
 import NoteItem from "./NoteItem";
+import { useNavigate } from 'react-router-dom';
 import AddNote from './AddNote';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 function Notes(props) {
+
+    const navigate=useNavigate();
     const context = useContext(noteContext)
     const { notes, fetchNotes,editNote, show, handleClose,handleShow } = context;
 
@@ -16,15 +19,22 @@ function Notes(props) {
         setenote({...enote,[event.target.name]:event.target.value})
     }
 
+
     function onClick(e){
         e.preventDefault()
         console.log({enote});
         editNote(enote.id,enote.title,enote.description,enote.tag)
         handleClose()
+        props.showAlert("Updated Successfully","success")
     }
 
-    useEffect(() => {   
+    useEffect(() => {
+        if(localStorage.getItem('token')){   
         fetchNotes()
+        }
+        else {
+        navigate("/login")
+        }
     })
 
     const updateNote=(currentnote)=> {
@@ -34,7 +44,7 @@ function Notes(props) {
 
     return (
         <div>
-            <AddNote />
+            <AddNote showAlert={props.showAlert} />
             <>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
@@ -85,9 +95,8 @@ function Notes(props) {
                     </Modal.Footer>
                 </Modal>
             </>
-
             {notes.map((note) => {
-                return <NoteItem key={note._id} updateNote={updateNote} note={note} />
+                return <NoteItem showAlert={props.showAlert} key={note._id} updateNote={updateNote} note={note} />
             })}
         </div>
     )

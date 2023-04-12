@@ -30,7 +30,7 @@ function App() {
     <>
     <NoteState>
     <Router>
-      <Navigationbar/>
+      <Navigationbar showAlert={showAlert} />
       <Alerts alert={alert}/>
       <Routes>
         <Route exact path="/" element={<Home showAlert={showAlert}/>}/>

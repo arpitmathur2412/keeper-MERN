@@ -34,7 +34,7 @@ function Login(props){
         if(json.success){
             // save the auth-token and redirect
             props.showAlert("Logged In Successfully!","primary")
-            localStorage.setItem('auth-token',json.authtoken)
+            localStorage.setItem('token',json.authtoken)
             navigate("/");
         } 
         else props.showAlert("Invalid Credentials!","danger")
@@ -64,6 +64,8 @@ function Login(props){
                 </Form.Group>
                 <Button type='submit' onClick={onClick} variant="dark">Login</Button>
             </Form>
+
+        
             </div>
         </div>
     )}

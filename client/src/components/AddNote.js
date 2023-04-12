@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import noteContext from '../context/notes/noteContext';
 
 
-function AddNote(){
+function AddNote(props){
     const context=useContext(noteContext) 
     const {addNote}=context;    
 
@@ -21,6 +21,7 @@ function AddNote(){
     function handleClick(event){
         event.preventDefault()
         addNote(newnote)
+        props.showAlert("Created Note successfully","success")
     }
 
 
